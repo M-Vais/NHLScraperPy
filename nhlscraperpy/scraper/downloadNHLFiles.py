@@ -1,5 +1,5 @@
 """
-
+    nhlscraperpy.scraper.downloadNHLFiles
     ~~~~~~~~~~~~
 
     Various functions to download related files required for getting the data
