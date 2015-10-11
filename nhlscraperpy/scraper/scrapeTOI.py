@@ -8,9 +8,7 @@
     License: MIT, see LICENSE for more details
 """
 
-from downloadNHLFiles import get_toi_home, get_toi_visit
-
-class TOI:
+class ScrapeTOI:
 
     def __init__(self, season, game_id):
         self.toi_home = get_toi_home(season, game_id)

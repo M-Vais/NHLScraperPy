@@ -2,14 +2,13 @@
 
     ~~~~~~~~~~~~
 
-    Scrapes NHL Play by Play data and returns an object
-    containing PBP data.
+    Representation of a game.
 
     Copyright: (C) 2015 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
 """
 
-class ScrapePBP:
+class NHLGame:
 
 	def __init__(self, season, game_id):
 		self._season = season
