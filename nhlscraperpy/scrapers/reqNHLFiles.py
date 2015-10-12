@@ -70,7 +70,7 @@ def _get_html_text(season, game_id, wanted_data):
         print("Req. for Season: {0} Game: {1} failed").format(season, game_id)
 
 def _get_game_id(game_id):
-    """ Returns properly formatted game id 
+    """ Returns properly formatted game id
 
     game_id -- a nhl game number that will be properly formatted for use
     """

@@ -11,22 +11,27 @@
 class ScrapeTOI:
 
     def __init__(self, season, game_id):
-        self.toi_home = get_toi_home(season, game_id)
-        self.toi_visit = get_toi_visit(season, game_id)
-        self.home_team_players = []
-        self.vist_team_players = []
+        self._season = season
+        self._game_id = game_id
+        self._home_team_players = {}
+        self._vist_team_players = {}
 
-    def _scrape_header_info(self):
-        """Scrapes header information from toi"""
-
-        pass
-
-    def _scrape_home_toi(self):
-        """Scrapes home team toi"""
+    def _scrape_header_info(self, html):
+        """Helper Function that scrapes the header information"""
 
         pass
 
-    def _scrape_visit_toi(self):
-        """Scrapes visit team toi"""
+    def _scrape_home_toi(self, html):
+        """Helper function that scrapes the home team toi information"""
 
         pass
+
+    def _scrape_visit_toi(self, html):
+        """Helper function that scrapes the away team toi information """
+
+        pass
+
+    def scrape_toi(self):
+
+        text_toi_home = reqNHLFiles.get_toi_home(self._season, self._game_id)
+        text_toi_away = reqNHLFiles.get_toi_away(self._season, self._game_id)
