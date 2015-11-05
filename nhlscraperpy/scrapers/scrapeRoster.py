@@ -70,7 +70,9 @@ class ScrapeRoster:
 ############################## HELPER FUNCTIONS ##############################
 
 	def _scrape_playing_roster(self, team, players):
-		"""Scrapes the players that are playing"""
+		"""
+		Scrapes the players that are playing
+		"""
 
 		for player in players[1:]:
 			player_attributes = player.findall('td')
@@ -83,7 +85,9 @@ class ScrapeRoster:
 			self._rosters[team]["playing"].append(player)
 
 	def _scrape_scratches(self, team, scratches):
-		""" Scrapes the players that are scratched for that game """
+		"""
+		Scrapes the players that are scratched for that game
+		"""
 
 		for scratch in scratches[1:]:
 			scratch_attributes = scratch.findall('td')
@@ -96,7 +100,9 @@ class ScrapeRoster:
 			self._rosters[team]["scratches"].append(scratch)
 
 	def _scrape_coaches(self, team, coaches):
-		""" Scrapes the coaches for the respective teams """
+		"""
+		Scrapes the coaches for the respective teams
+		"""
 
 		for coach in coaches:
 			coach_name = coach.findall('td')[0].text

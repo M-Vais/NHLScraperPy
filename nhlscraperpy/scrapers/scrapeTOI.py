@@ -8,18 +8,28 @@
     License: MIT, see LICENSE for more details
 """
 
-class ScrapeTOI:
+class TOIEvent:
+    """
+    Represents a single toi event for a player
+    """
 
+    def __init__(self, ice_event):
+        self._shift = ice_event[0]
+        self._period = ice_event[1]
+        self._start_shift = ice_event[2]
+        self._end_shift = ice_event[3]
+        self._duration = ice_event[4]
+        self._event = ice_event[5]
+
+class ScrapeTOI:
+    """
+    Scrapes TOI Information for home and away team
+    """
     def __init__(self, season, game_id):
         self._season = season
         self._game_id = game_id
         self._home_team_players = {}
         self._vist_team_players = {}
-
-    def _scrape_header_info(self, html):
-        """Helper Function that scrapes the header information"""
-
-        pass
 
     def _scrape_home_toi(self, html):
         """Helper function that scrapes the home team toi information"""
