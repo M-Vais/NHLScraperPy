@@ -1,8 +1,8 @@
 """
 
-	Roster.py
+	nhlgameroster.py
 	~~~~~~~~~~~~
-	Roster.py contains the roster information of players, officials, 
+	nhlgameroster.py contains the roster information of players, officials, 
 	coaches in a game.
 	
     Copyright: (C) 2015 by Vaisnavan Mahendran

@@ -43,7 +43,7 @@ def get_toi_home(season, mode, game_id):
 
     return _get_html_text(season, mode, game_id, constants.GAME_FILES['TOIH'])
 
-def get_toi_visit(season, mode, game_id):
+def get_toi_away(season, mode, game_id):
     """ Returns text of html time on ice data of the visiting team
 
     season  -- is composed of the years the season takes place ex. 20142015
