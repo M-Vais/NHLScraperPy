@@ -5,15 +5,15 @@
 	nhlgameroster.py contains the roster information of players, officials, 
 	coaches in a game.
 	
-    Copyright: (C) 2015 by Vaisnavan Mahendran
-    License: MIT, see LICENSE for more details
+	Copyright: (C) 2015 by Vaisnavan Mahendran
+	License: MIT, see LICENSE for more details
 
 """
 
 from . import nhlrequest
 from lxml import html
 
-class NHLGameRoster:
+class ScrapeGameRoster:
 
 	def __init__(self, season, mode, game_id):
 		self.season = season

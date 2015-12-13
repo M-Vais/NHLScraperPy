@@ -12,7 +12,7 @@
 from . import nhlrequest
 from lxml import html
 
-class NHLGameToi:
+class ScrapeGameToi:
 
 	def __init__(self, season, mode, game_id):
 		self.season = season
@@ -65,7 +65,7 @@ def _scrape_toi_players(player_headings):
 
 	for player_heading in player_headings:
 		name = _clean_name(player_heading.text)
-		players[name] = scrape_toi_events(player_heading)
+		players[name] = _scrape_toi_events(player_heading)
 
 	return players
 
