@@ -61,7 +61,8 @@ def _get_html_text(season, mode, game_id, wanted_data):
     game_id -- indicates a game during nhl season ex. 24
     """
     
-    url = wanted_data.format(season, mode, _get_game_id(game_id))
+    url = wanted_data.format(constants.SEASONS[season], mode, 
+                             _get_game_id(game_id))
 
     try:
         r = requests.get(url, auth=('user', 'pass'))

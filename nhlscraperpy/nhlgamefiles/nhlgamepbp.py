@@ -1,7 +1,7 @@
 """
 
 	nhlgamepbp.py
-	~~~~~~~~~~~~
+	~~~~~~~~~~~~~
 	nhlgamepbp.py contains the play by play information for the game.
 	
     Copyright: (C) 2015 by Vaisnavan Mahendran
@@ -42,8 +42,6 @@ class ScrapeGamePBP:
 			descriptions.extend(_clean_on_ice(home_on_ice))	
 			pbp_events.append(descriptions)
 
-			print(descriptions)
-
 		return pbp_events		
 
 ############################## HELPER FUNCTIONS ##############################
@@ -58,10 +56,10 @@ def _clean_description(descriptions):
 		if index == 2 and '\xa0' == description:
 			descriptions[index] = None
 
-		elif '\xa0' in descrip:
+		elif '\xa0' in description:
 			descriptions[index] = descriptions[index].replace('\xa0', " ")
 
-	return description
+	return descriptions
 
 
 def _clean_on_ice(players_on_ice):

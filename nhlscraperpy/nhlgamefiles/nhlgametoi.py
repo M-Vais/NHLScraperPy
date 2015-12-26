@@ -1,7 +1,7 @@
 """
 
 	nhlgametoi.py
-	~~~~~~~~~~~~
+	~~~~~~~~~~~~~
 	nhlgametoi.py contains the toi information from a game.
 	
     Copyright: (C) 2015 by Vaisnavan Mahendran
@@ -12,13 +12,13 @@
 from . import nhlrequest
 from lxml import html
 
-class ScrapeGameToi:
+class ScrapeGameTOI:
 
 	def __init__(self, season, mode, game_id):
 		self.season = season
 		self.mode = mode
 		self.game_id = game_id
-		self._home_toi, self._away_toi = self._scrape()
+		self._htoi, self._atoi = self._scrape()
 
 	def _scrape(self):
 		"""
