@@ -9,24 +9,19 @@
 
 """
 
-from . import nhlrequest
+from .nhlrequest import get_pbp
 from lxml import html
 
-class ScrapeGamePBP:
+class ScrapePBP:
 
-	def __init__(self, season, mode, game_id):
-		self.season = season
-		self.mode = mode
-		self.game_id = game_id
-		self._pbp = self._scrape()
+	def __init__(self, season, game_type, game_number):
+		self._html = get_pbp(season, game_type, game_number)
 
-	def _scrape(self):
+	def scrape(self):
 		"""
 		Scrapes the play by play sheet.
 		"""
-
-		pbp = nhlrequest.get_pbp(self.season, self.mode, self.game_id)
-		tree = html.fromstring(pbp)
+		tree = html.fromstring(self._html)
 
 		events = tree.xpath("//tr[@class='evenColor']")
 		pbp_events = []
@@ -42,7 +37,14 @@ class ScrapeGamePBP:
 			descriptions.extend(_clean_on_ice(home_on_ice))	
 			pbp_events.append(descriptions)
 
-		return pbp_events		
+		return pbp_events
+
+	def get_html(self):
+		"""
+		Returns HTML of the PBP
+		"""
+
+		return self._html		
 
 ############################## HELPER FUNCTIONS ##############################
 

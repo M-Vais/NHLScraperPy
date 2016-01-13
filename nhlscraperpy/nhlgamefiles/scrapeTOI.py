@@ -9,48 +9,29 @@
 
 """
 
-from . import nhlrequest
+from .nhlrequest import get_toi_home, get_toi_away
 from lxml import html
 
-class ScrapeGameTOI:
+class ScrapeTOI:
 
-	def __init__(self, season, mode, game_id):
-		self.season = season
-		self.mode = mode
-		self.game_id = game_id
-		self._htoi, self._atoi = self._scrape()
+	def __init__(self, season, game_type, game_number):
+		self._home_html = get_toi_home(season, game_type, game_number)
+		self._away_html = get_toi_away(season, game_type, game_number) 
 
-	def _scrape(self):
+	def scrape(self):
 		"""
 		Scrapes the toi roster sheets.
 		"""
 
-		home = nhlrequest.get_toi_home(self.season, self.mode, self.game_id) 
-		away = nhlrequest.get_toi_away(self.season, self.mode, self.game_id)
-
-		tree = html.fromstring(home)
+		tree = html.fromstring(self._home_html)
 		player_headings = tree.xpath('//td[@class="playerHeading + border"]')
 		home_players = _scrape_toi_players(player_headings)
 
-		tree = html.fromstring(away)
+		tree = html.fromstring(self._away_html)
 		player_headings = tree.xpath('//td[@class="playerHeading + border"]')
 		away_players = _scrape_toi_players(player_headings)
 
 		return home_players, away_players
-
-	def get_home_toi(self):
-		"""
-		Returns the home team players toi.
-		"""
-
-		return self._home_toi
-
-	def get_away_toi(self):
-		"""
-		Returns the away team players toi.
-		"""
-
-		return self._away_toi
 		
 ############################## HELPER FUNCTIONS ##############################
 

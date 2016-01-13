@@ -10,18 +10,15 @@
 
 """
 
-from . import nhlrequest
+from .nhlrequest import get_roster
 from lxml import html
 
-class ScrapeGameRoster:
+class ScrapeRoster:
 
-	def __init__(self, season, mode, game_id):
-		self.season = season
-		self.game_id = game_id
-		self.mode = mode
-		self._rosters = self._scrape()
+	def __init__(self, season, game_type, game_number):
+		self._html = get_roster(season, game_type, game_number)
 
-	def _scrape(self):
+	def scrape(self):
 		"""
 		Scrapes the roster game sheet.
 		"""
@@ -32,8 +29,7 @@ class ScrapeGameRoster:
 		 			'OFFICIALS': {}
 				 }
 
-		html_text = nhlrequest.get_roster(self.season, self.mode, self.game_id)
-		tree = html.fromstring(html_text)
+		tree = html.fromstring(self._html)
 
 		# Home player information
 		players = tree.xpath('//table[1]/tr/td/table/tr[4]' \
@@ -56,97 +52,6 @@ class ScrapeGameRoster:
 		self._scrape_coaches('AWAY', coaches, roster)
 
 		return roster
-
-	def get_home_roster(self):
-		"""
-		Returns the home roster for the game.
-		"""
-
-		return self._rosters['HOME']['ROSTER']
-
-	def get_away_roster(self):
-		"""
-		Returns the away roster for the game.
-		"""
-
-		return self._rosters['AWAY']['ROSTER']
-
-	def get_home_scratches(self):
-		"""
-		Returns scratched players for home team
-		"""
-
-		return self._rosters['HOME']['SCRATCHES']
-
-	def get_away_scratches(self):
-		"""
-		Returns scratched players for away team
-		"""
-
-		return self._rosters['AWAY']['SCRATCHES']
-
-	def get_home_coaches(self):
-		"""
-		Returns coaches for home team
-		"""
-
-		return self._rosters['HOME']['COACHES']
-
-	def get_away_coaches(self):
-		"""
-		Return coaches for away team
-		"""
-
-		return self._rosters['AWAY']['COACHES']
-
-	def get_officials(self):
-		"""
-		Return officials for the game
-		"""
-
-		return self._rosters['OFFICIALS']
-
-	def get_home_goalies(self):
-		"""
-		Returns home goaltenders for the game.
-		"""
-
-		return self._get_player_type('HOME', 'G')
-
-	def get_away_goalies(self):
-		"""
-		Returns away goaltenders for the game.
-		"""
-
-		return self._get_player_type('AWAY', 'G')
-
-	def get_home_defenseman(self):
-		"""
-		Returns home defenders for the game.
-		"""
-
-		return self._get_player_type('HOME', 'D')
-
-	def get_away_defenseman(self):
-		"""
-		Returns away defenders for the game.
-		"""
-
-		return self._get_player_type('AWAY', 'D')
-
-	def get_home_forwards(self):
-		"""
-		Returns home forwards for the game.
-		"""
-
-		return self._get_player_type('HOME', 'LRC')
-
-	def get_away_forwards(self):
-		"""
-		Returns home forwards for the game.
-		"""
-
-		return self._get_player_type('AWAY', 'LRC')
 
 ############################## HELPER FUNCTIONS ##############################
 
