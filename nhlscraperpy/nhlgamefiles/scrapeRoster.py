@@ -10,7 +10,7 @@
 
 """
 
-from .nhlrequest import get_roster
+from ..util.nhlrequest import get_roster
 from lxml import html
 
 class ScrapeRoster:

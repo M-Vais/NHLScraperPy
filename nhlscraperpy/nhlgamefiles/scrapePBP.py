@@ -9,7 +9,7 @@
 
 """
 
-from .nhlrequest import get_pbp
+from ..util.nhlrequest import get_pbp
 from lxml import html
 
 class ScrapePBP:
@@ -77,7 +77,7 @@ def _clean_on_ice(players_on_ice):
 		players.append(player.split("-")[1].strip())
 
 	# Insert None for slots when there are less than 6 players on ice
-	# To ensure consistency for the length of the players
+	# To ensure consistency for the number of the players on the ice
 	while len(players) < 6:
 		players.insert(-1, None)
 

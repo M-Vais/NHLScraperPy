@@ -9,7 +9,7 @@
 
 """
 
-from .nhlrequest import get_toi_home, get_toi_away
+from ..util.nhlrequest import get_toi_home, get_toi_away
 from lxml import html
 
 class ScrapeTOI:
