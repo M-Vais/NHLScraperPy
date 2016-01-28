@@ -35,7 +35,6 @@ class ScrapeTOI:
 		
 ############################## HELPER FUNCTIONS ##############################
 
-
 def _scrape_toi_players(player_headings):
 	"""
 	Iterates over each player_heading and fetches player name and its toi
