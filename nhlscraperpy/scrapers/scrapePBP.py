@@ -18,8 +18,7 @@ class ScrapePBP:
 		self._html = get_pbp(season, game_type, game_number)
 
 	def scrape(self):
-		"""
-		Scrapes the play by play sheet.
+		"""Scrapes the play by play sheet.
 		"""
 		tree = html.fromstring(self._html)
 
