@@ -9,31 +9,14 @@
 
 """
 
-from ..util.nhlrequest import get_toi_home, get_toi_away
 from lxml import html
 
-class ScrapeTOI:
+def get_toi(toi_html):
 
-	def __init__(self, season, game_type, game_number):
-		self._home_html = get_toi_home(season, game_type, game_number)
-		self._away_html = get_toi_away(season, game_type, game_number) 
+	tree = html.fromstring(toi_html)
+	player_headings = tree.xpath('//td[@class="playerHeading + border"]')
 
-	def scrape(self):
-		"""
-		Scrapes the toi roster sheets.
-		"""
-
-		tree = html.fromstring(self._home_html)
-		player_headings = tree.xpath('//td[@class="playerHeading + border"]')
-		home_players = _scrape_toi_players(player_headings)
-
-		tree = html.fromstring(self._away_html)
-		player_headings = tree.xpath('//td[@class="playerHeading + border"]')
-		away_players = _scrape_toi_players(player_headings)
-
-		return home_players, away_players
-		
-############################## HELPER FUNCTIONS ##############################
+	return _scrape_toi_players(player_headings)	
 
 def _scrape_toi_players(player_headings):
 	"""

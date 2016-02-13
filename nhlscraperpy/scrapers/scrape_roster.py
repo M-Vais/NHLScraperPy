@@ -68,8 +68,6 @@ def get_away_coaches(roster_html):
 
     return _clean_coaches(coaches)  
     
-#~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Helper Functions ~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
-
 def _clean_players(players):
 
     roster = []

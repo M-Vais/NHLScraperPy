@@ -9,43 +9,22 @@
 
 """
 
-from ..util.nhlrequest import get_pbp
 from lxml import html
 
-class ScrapePBP:
+def get_pbp(pbp_html):
 
-	def __init__(self, season, game_type, game_number):
-		self._html = get_pbp(season, game_type, game_number)
+	tree = html.fromstring(pbp_html)
 
-	def scrape(self):
-		"""Scrapes the play by play sheet.
-		"""
-		tree = html.fromstring(self._html)
+	pbp_events = []
 
-		events = tree.xpath("//tr[@class='evenColor']")
-		pbp_events = []
+	for event in tree.xpath("//tr[@class='evenColor']"):
+		descriptions = _clean_description(event.xpath("./td/text()")[:7])
+		away_players = _clean_players(event.xpath("td[7]//font/@title"))
+		home_players = _clean_players(event.xpath("td[8]//font/@title"))
 
-		for event in events:
-			descriptions = event.xpath("./td/text()")[:7]
-			away_on_ice = event.xpath("td[7]//font/@title")
-			home_on_ice = event.xpath("td[8]//font/@title")
+		pbp_events.append(descriptions + away_players + home_players) 
 
-		
-			descriptions = _clean_description(descriptions)
-			descriptions.extend(_clean_on_ice(away_on_ice))
-			descriptions.extend(_clean_on_ice(home_on_ice))	
-			pbp_events.append(descriptions)
-
-		return pbp_events
-
-	def get_html(self):
-		"""
-		Returns HTML of the PBP
-		"""
-
-		return self._html		
-
-############################## HELPER FUNCTIONS ##############################
+	return pbp_events		
 
 def _clean_description(descriptions):
 	"""
@@ -63,7 +42,7 @@ def _clean_description(descriptions):
 	return descriptions
 
 
-def _clean_on_ice(players_on_ice):
+def _clean_players(players_on_ice):
 	"""
 	Helper that cleans the player information for whose on the ice to
 	only have their names.

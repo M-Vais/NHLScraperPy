@@ -13,7 +13,7 @@
 from .. import constants
 import requests
 
-def get_pbp(season, mode, game_id):
+def download_pbp(season, mode, game_id):
     """ Returns text of html play by play data
 
     season  -- is composed of the years the season takes place ex. 20142015
@@ -23,7 +23,7 @@ def get_pbp(season, mode, game_id):
 
     return _get_html_text(season, mode, game_id, constants.GAME_FILES['PBP'])
 
-def get_roster(season, mode, game_id):
+def download_roster(season, mode, game_id):
     """ Returns text of html roster data of both teams
 
     season  -- is composed of the years the season takes place ex. 20142015
@@ -33,7 +33,7 @@ def get_roster(season, mode, game_id):
 
     return _get_html_text(season, mode, game_id, constants.GAME_FILES['ROSTER'])
 
-def get_toi_home(season, mode, game_id):
+def download_toi_home(season, mode, game_id):
     """ Returns text of html time on ice data of the home team
 
     season  -- is composed of the years the season takes place ex. 20142015
@@ -43,7 +43,7 @@ def get_toi_home(season, mode, game_id):
 
     return _get_html_text(season, mode, game_id, constants.GAME_FILES['TOIH'])
 
-def get_toi_away(season, mode, game_id):
+def download_toi_away(season, mode, game_id):
     """ Returns text of html time on ice data of the visiting team
 
     season  -- is composed of the years the season takes place ex. 20142015
