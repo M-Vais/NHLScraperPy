@@ -1,8 +1,8 @@
 """
 
-	nhlgametoi.py
+	scrape_toi.py
 	~~~~~~~~~~~~~
-	nhlgametoi.py contains the toi information from a game.
+	scrape_toi scrapes the toi information for either the home/away team.
 	
     Copyright: (C) 2015 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
@@ -12,7 +12,9 @@
 from lxml import html
 
 def get_toi(toi_html):
-
+	"""
+	Returns scraped toi data
+	"""
 	tree = html.fromstring(toi_html)
 	player_headings = tree.xpath('//td[@class="playerHeading + border"]')
 

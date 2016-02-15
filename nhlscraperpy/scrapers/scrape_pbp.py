@@ -1,8 +1,9 @@
 """
 
-	nhlgamepbp.py
+	scrape_pbp.py
 	~~~~~~~~~~~~~
-	nhlgamepbp.py contains the play by play information for the game.
+	scrape_pbp.py scrapes the pbp information and returns it in a list of list
+	format. 
 	
     Copyright: (C) 2015 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
@@ -19,8 +20,9 @@ def get_pbp(pbp_html):
 
 	for event in tree.xpath("//tr[@class='evenColor']"):
 		descriptions = _clean_description(event.xpath("./td/text()")[:7])
-		away_players = _clean_players(event.xpath("td[7]//font/@title"))
-		home_players = _clean_players(event.xpath("td[8]//font/@title"))
+		away_players = _clean_players(event.xpath("td[7]//font/@title | td[7]//font/text()"))
+		break
+		home_players = _clean_players(event.xpath("td[8]//font/@title | td[8]//font/text()"))
 
 		pbp_events.append(descriptions + away_players + home_players) 
 
@@ -49,10 +51,12 @@ def _clean_players(players_on_ice):
 	"""
 
 	players = []
+	players_info = list(zip(players_on_ice[::2], players_on_ice[1::2]))
 
 	# Gets only the player name 
-	for player in players_on_ice:
-		players.append(player.split("-")[1].strip())
+	for player in players_info:
+		name = player[0].split("-")[1].strip()
+		players.append(name + " " + player[1])
 
 	# Insert None for slots when there are less than 6 players on ice
 	# To ensure consistency for the number of the players on the ice

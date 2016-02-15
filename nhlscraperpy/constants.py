@@ -15,12 +15,17 @@ MODE = {
 	'PLAYOFF' : '3'
 }
 
-GAME_FILES = {
+GAME_FILES_HTML = {
 
     'ROSTER' : 'http://www.nhl.com/scores/htmlreports/{0}/RO0{1}{2}.HTM',
     'PBP' : 'http://www.nhl.com/scores/htmlreports/{0}/PL0{1}{2}.HTM',
     'TOIV' : 'http://www.nhl.com/scores/htmlreports/{0}/TV0{1}{2}.HTM',
     'TOIH' : 'http://www.nhl.com/scores/htmlreports/{0}/TH0{1}{2}.HTM' 
+}
+
+GAME_FILES_JSON {
+	
+	'PBP' : 'https://statsapi.web.nhl.com/api/v1/game/{0}/feed/live' # 2014020001
 }
 
 SEASONS = {
@@ -35,21 +40,6 @@ SEASONS = {
 	2015 : "20142015",
 	2016 : "20152016"
 }
-
-SEASON_GAMES = {
-
-	2008 : 1230,
-	2009 : 1230,
-	2010 : 1230,
-	2011 : 1230,
-	2012 : 1230,
-	2013 :  720,
-	2014 : 1230,
-	2015 : 1230,
-	2016 : 1230,
-}
-
-
 
 
 

@@ -1,11 +1,11 @@
 """
 
-    nhlgameroster.py
+    scrape_roster.py
     ~~~~~~~~~~~~~~~~
-    nhlgameroster.py contains the roster information of players, officials, 
-    coaches in a game.
+    scrape_roster.py scrapes the roster information. Players are represented
+    as a dictionary containing their number, name, and position.
     
-    Copyright: (C) 2015 by Vaisnavan Mahendran
+    Copyright: (C) 2016 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
 
 """
