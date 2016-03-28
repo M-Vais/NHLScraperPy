@@ -15,7 +15,7 @@ MODE = {
 	'PLAYOFF' : '3'
 }
 
-GAME_HTML = {
+GAME_FILE = {
 
 	# {0} : YYYYZZZZ - YYYY (START_YEAR) - ZZZZ (END_YEAR)
 	# {1} : XX (Game Type)
@@ -23,15 +23,12 @@ GAME_HTML = {
     'ROSTER' : 'http://www.nhl.com/scores/htmlreports/{0}/RO0{1}{2}.HTM',
     'PBP' : 'http://www.nhl.com/scores/htmlreports/{0}/PL0{1}{2}.HTM',
     'TOIV' : 'http://www.nhl.com/scores/htmlreports/{0}/TV0{1}{2}.HTM',
-    'TOIH' : 'http://www.nhl.com/scores/htmlreports/{0}/TH0{1}{2}.HTM' 
-}
+    'TOIH' : 'http://www.nhl.com/scores/htmlreports/{0}/TH0{1}{2}.HTM',
 
-GAME_JSON {
-	
-	# Contains easy to access information about players playing in games. Will
+    # Contains easy to access information about players playing in games. Will
 	# consider doing a full scraper based on JSON in the future.
 	# {0} : YYYYXXZZZZ - YYYY (Year) - XX (Game Type) - ZZZZ (Game Number)	
-	'PBP' : 'https://statsapi.web.nhl.com/api/v1/game/{0}/feed/live'
+	'JSON' : 'https://statsapi.web.nhl.com/api/v1/game/{0}/feed/live' 
 }
 
 SEASONS = {
