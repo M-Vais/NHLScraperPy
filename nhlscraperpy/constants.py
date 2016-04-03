@@ -3,13 +3,13 @@
 	Constants.py
 	~~~~~~~~~~~~
 	Constants.py contains important constants used throughout the package.
-	
-    Copyright: (C) 2015 by Vaisnavan Mahendran
+
+    Copyright: (C) 2016 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
 """
 
 MODE = {
-	
+
 	'PRESEASON' : '1',
 	'SEASON' : '2',
 	'PLAYOFF' : '3'
@@ -27,8 +27,8 @@ GAME_FILE = {
 
     # Contains easy to access information about players playing in games. Will
 	# consider doing a full scraper based on JSON in the future.
-	# {0} : YYYYXXZZZZ - YYYY (Year) - XX (Game Type) - ZZZZ (Game Number)	
-	'JSON' : 'https://statsapi.web.nhl.com/api/v1/game/{0}/feed/live' 
+	# {0} : YYYYXXZZZZ - YYYY (Year) - XX (Game Type) - ZZZZ (Game Number)
+	'JSON' : 'https://statsapi.web.nhl.com/api/v1/game/{0}/feed/live'
 }
 
 SEASONS = {
@@ -43,7 +43,3 @@ SEASONS = {
 	2014 : "20142015",
 	2015 : "20152016"
 }
-
-
-
-
