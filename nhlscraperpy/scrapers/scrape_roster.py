@@ -26,7 +26,7 @@ def scrape_roster(roster_html):
 			     _clean(tree.xpath('(//td[@class="border"])[4]/table/tr'))]
 
 	# TODO: Scrape coaching and referee information
-	
+
 	return players, scratches
 
 def _clean(players):
@@ -38,6 +38,6 @@ def _clean(players):
 	for player in players[1:]:
 
 		player = player.findall('td')
-		roster.append((player[2].text.split("(")[0].strip(),
-					  player[1].text, player[0].text))
+		roster.append(",".join((player[0].text, player[1].text,
+					  player[2].text.split("(")[0].strip())))
 	return roster
