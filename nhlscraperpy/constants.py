@@ -9,14 +9,12 @@
 """
 
 MODE = {
-
 	'PRESEASON' : '1',
 	'SEASON' : '2',
 	'PLAYOFF' : '3'
 }
 
 GAME_FILE = {
-
 	# {0} : YYYYZZZZ - YYYY (START_YEAR) - ZZZZ (END_YEAR)
 	# {1} : XX (Game Type)
 	# {2} : WWWW (Game Number)
@@ -32,7 +30,6 @@ GAME_FILE = {
 }
 
 SEASONS = {
-
 	2007 : "20072008",
 	2008 : "20082009",
 	2009 : "20092010",
