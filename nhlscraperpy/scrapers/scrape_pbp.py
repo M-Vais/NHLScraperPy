@@ -11,22 +11,22 @@ from lxml import html
 
 def scrape_pbp(pbp_html):
 
-	data = []
+    data = []
     tree = html.fromstring(pbp_html)
+    
+    for row in tree.xpath('//tr[@class="evenColor"]'):
 
-	for row in tree.xpath('//tr[@class="evenColor"]'):
+        cols = row.findall('td')
+        info = [cols[0].text, cols[1].text, cols[2].text.replace('\xa0', ""),
+                cols[3].text, cols[4].text,
+                cols[5].text.replace('\xa0', " ").replace(",", "-")]
 
-		cols = row.findall('td')
-		info = [cols[0].text, cols[1].text, cols[2].text.replace('\xa0', ""),
-		 	    cols[3].text, _parse_event(cols[3].text, cols[4].text),
-			    cols[5].text.replace('\xa0', " ")]
+        visit_players = _clean_player(cols[6].xpath('.//td/font'))
+        home_players = _clean_player(cols[7].xpath('.//td/font'))
 
-		visit_players = _clean_players(cols[6].xpath('.//td/font'))
-		home_players = _clean_players(cols[7].xpath('.//td/font'))
+        data.append(info + visit_players + home_players)
 
-		data.append(info + visit_players + home_players)
-
-	return data
+    return data
 ''' ~~~~~~~~~~~~~~~~~~~~~~~~~~ HELPER FUNCTIONS ~~~~~~~~~~~~~~~~~~~~~~~~~~ '''
 
 def _clean_player(player_columns):
@@ -36,9 +36,9 @@ def _clean_player(player_columns):
 
     for player in player_columns:
         player_name = player.xpath('./@title')[0].split('- ')[1]
-        player_number = player.xpath('./text()')[0]
-
-        players.append(player_name + ' ' + player_number)
+        #player_number = player.xpath('./text()')[0]
+        print()
+        players.append(player_name)
 
     return players
 
