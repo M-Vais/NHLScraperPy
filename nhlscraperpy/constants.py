@@ -3,7 +3,7 @@
     ~~~~~~~~~~~~
     constants.py contains important constants used throughout the package.
 
-    Copyright: (C) 2016 by Vaisnavan Mahendran
+    Copyright: (C) 2017 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
 """
 
@@ -46,6 +46,7 @@ SEASONS = {
 
 TEAMS = {
 
+    #TODO: Add Las Vegas Knights
     "ANA" : "Anaheim Ducks",
     "ARI" : "Arizona Coyotes",
     "BOS" : "Boston Bruins",
