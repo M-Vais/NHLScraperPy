@@ -3,7 +3,7 @@
     ~~~~~~~~~~~~
     constants.py contains important constants used throughout the package.
 
-    Copyright: (C) 2017 by Vaisnavan Mahendran
+    Copyright: (C) 2018 by Vaisnavan Mahendran
     License: MIT, see LICENSE for more details
 """
 
@@ -17,7 +17,7 @@ MODE = {
 FILES = {
 
     # {0} : YYYYZZZZ - YYYY (START_YEAR) - ZZZZ (END_YEAR)
-    # {1} : XX (Game Type)
+    # {1} : XX (Game Type) (01 - 03)
     # {2} : WWWW (Game Number)
     'ROSTER' : 'http://www.nhl.com/scores/htmlreports/{0}/RO{1}{2}.HTM',
     'PBP' : 'http://www.nhl.com/scores/htmlreports/{0}/PL{1}{2}.HTM',
@@ -46,7 +46,6 @@ SEASONS = {
 
 TEAMS = {
 
-    #TODO: Add Las Vegas Knights
     "ANA" : "Anaheim Ducks",
     "ARI" : "Arizona Coyotes",
     "BOS" : "Boston Bruins",
@@ -61,6 +60,7 @@ TEAMS = {
     "EDM" : "Edmonton Oilers",
     "FLA" : "Florida Panthers",
     "LAK" : "Los Angeles Kings",
+    "LVK" : "Las Vegas Knights",
     "MIN" : "Minnesota Wild",
     "MTL" : "Montreal Canadiens",
     "NJD" : "New Jersey Devil",
