@@ -1,6 +1,6 @@
 from setuptools import setup
 
- setup(name='nhlscraperpy',
+setup(name='nhlscraperpy',
  	   version='0.1',
  	   description='Advanced Data for NHL Games',
  	   author='Vaisnavan Mahendran',
