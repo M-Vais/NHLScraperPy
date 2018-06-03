@@ -1,2 +1,2 @@
 # nhlscraperpy
-This project was influence by the R library - nhlscrapr. 
+This project was influence by the R library - nhlscrapr. The hopes with this project is it to make it an easy to use library that will let users fetch all the necessary data they need on current hockey analytics.
