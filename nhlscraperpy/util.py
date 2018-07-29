@@ -8,8 +8,6 @@ def get_html(url):
             return request.text
         else:
             print('Error 404 - Unable to download: {0}'.format(url))
-            return None
-
+            
     except requests.exceptions.RequestException:
         print('Error - Unable to download: {0}'.format(url))
-        return None
